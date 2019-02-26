@@ -53,6 +53,57 @@ public class BaseDB extends SQLiteOpenHelper {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ################ Tabela Vendedor #################
+    public static final String TBL_VENDEDOR = "vendedor";
+    public static final String VENDEDOR_ID = "id";
+    public static final String VENDEDOR_NOME = "nome";
+
+    // ############### Colunas da tabela vendedor ############
+    public static final String[] TBL_VENDEDOR_COLUNAS = {
+            VENDEDOR_ID,
+            VENDEDOR_NOME
+    };
+
+    // ############### DDL - Criação da tabela vendedor ##########
+    public static final String CREATE_VENDEDOR =
+            "CREATE TABLE "+TBL_VENDEDOR+"("+
+                    VENDEDOR_ID+" INTEGER PRIMARY KEY, "+
+                    VENDEDOR_NOME+" TEXT NOT NULL"+
+                    ");";
+
+    // ################ DDL - Exclusão da tabela vendedor ##########
+    public static final String DROP_VENDEDOR = "DROP TABLE IF EXISTS "+TBL_VENDEDOR;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // ############ BANCO, NOME, VERSAO #############
 
     private static final String BANCO_NOME = "w190225.sqlite";
@@ -65,11 +116,13 @@ public class BaseDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_CLIENTE);
+        sqLiteDatabase.execSQL(CREATE_VENDEDOR);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(DROP_CLIENTE);
+        sqLiteDatabase.execSQL(DROP_VENDEDOR);
         onCreate(sqLiteDatabase);
     }
 }
